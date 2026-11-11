@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Closet Sousa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fffdfc;--ink:#151515;--ink-t:#fff;--mute:#7b7479;--line:#e3edf7;--margin:#f0a9bd;--pink:#f6c8d4;--blue:#a9cdee;--onp:#151515;--card:#fff;--chip:#f3eef0;--sh:0 1px 2px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.05);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#171518;--ink:#f5f1f2;--ink-t:#151515;--mute:#a49da2;--line:#26303a;--margin:#8a4a5d;--pink:#8a4a5d;--blue:#3b6288;--onp:#fff;--card:#221f23;--chip:#2c282d;--sh:0 1px 2px rgba(0,0,0,.5),0 4px 12px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--paper:#171518;--ink:#f5f1f2;--ink-t:#151515;--mute:#a49da2;--line:#26303a;--margin:#8a4a5d;--pink:#8a4a5d;--blue:#3b6288;--onp:#fff;--card:#221f23;--chip:#2c282d;--sh:0 1px 2px rgba(0,0,0,.5),0 4px 12px rgba(0,0,0,.35)}
+:root[data-acc="azul"]{--pink:#a9cdee;--blue:#f6c8d4;--margin:#a9cdee}
+@media (prefers-color-scheme:dark){:root[data-acc="azul"]:not([data-theme="light"]){--pink:#3b6288;--blue:#8a4a5d;--margin:#3b6288}}
+:root[data-acc="azul"][data-theme="dark"]{--pink:#3b6288;--blue:#8a4a5d;--margin:#3b6288}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;border-radius:0;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{font:15px/1.4 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden;background-color:var(--paper);
+background-image:linear-gradient(90deg,transparent 40px,var(--margin) 40px,var(--margin) 41px,transparent 41px),repeating-linear-gradient(180deg,transparent 0 27px,var(--line) 27px 28px);background-attachment:local}
+html[data-paper="grade"] body{background-image:repeating-linear-gradient(90deg,transparent 0 27px,var(--line) 27px 28px),repeating-linear-gradient(180deg,transparent 0 27px,var(--line) 27px 28px)}
+html[data-paper="liso"] body{background-image:linear-gradient(90deg,transparent 40px,var(--margin) 40px,var(--margin) 41px,transparent 41px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:10}
+#app{max-width:560px;margin:0 auto;padding-bottom:130px;overflow-x:hidden}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);box-shadow:0 1px 0 var(--line),0 6px 10px -8px rgba(0,0,0,.25);padding:14px 16px 10px 56px;display:flex;align-items:center;gap:10px;min-height:68px}
+h1{font:600 32px/1 Caveat,"Segoe Script",cursive;margin:0}
+header p{margin:2px 0 0;font-size:12px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.ib{position:absolute;left:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--ink);font-size:22px;cursor:pointer}
+main{padding:10px 16px 0 56px}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);margin:18px 0 6px}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:0;border-bottom:2px solid var(--pink);padding:12px;box-shadow:var(--sh);outline:none}
+input:focus,textarea:focus{border-bottom-color:var(--blue)}
+textarea{min-height:84px;resize:vertical}
+.sbar{position:relative;width:calc(100% - 40px);margin:14px auto 4px}
+.sbar input{padding-left:42px}
+.sbar svg{position:absolute;left:13px;top:50%;margin-top:-10px;width:20px;height:20px;stroke:var(--mute);fill:none;stroke-width:1.8}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 20px;border:0;background:var(--ink);color:var(--ink-t);font:600 14px Inter,system-ui,sans-serif;letter-spacing:.03em;cursor:pointer;text-decoration:none;box-shadow:var(--sh)}
+.btn.pk{background:var(--pink);color:var(--onp)}.btn.bl{background:var(--blue);color:var(--onp)}
+.btn.ghost{background:var(--chip);color:var(--ink);box-shadow:none}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--paper);box-shadow:0 -6px 12px -8px rgba(0,0,0,.25);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bar{padding:12px 16px;display:flex;justify-content:center}.bar .btn{width:100%;max-width:528px}
+.tabs{display:flex;max-width:560px;margin:0 auto}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:58px;border:0;background:none;color:var(--mute);font:500 11px Inter,system-ui,sans-serif;cursor:pointer;position:relative;transition:color .2s}
+.tab.on{color:var(--ink)}.tab.on::after{content:"";position:absolute;top:0;left:32%;right:32%;height:3px;background:var(--pink)}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
+.fab{position:absolute;right:16px;bottom:calc(100% + 14px);width:54px;height:54px;border:0;background:var(--ink);color:var(--ink-t);font:400 30px/1 Inter,sans-serif;box-shadow:var(--sh);cursor:pointer}
+.row{display:flex;align-items:center;gap:12px;background:var(--card);box-shadow:var(--sh);padding:12px;margin-top:10px;cursor:pointer;animation:pop .32s both}
+.row div{flex:1;min-width:0}
+.row b,.it b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+small{color:var(--mute);font-size:12px}
+.ini{width:42px;height:42px;background:var(--pink);color:var(--onp);display:grid;place-items:center;font:600 22px Caveat,cursive;overflow:hidden;flex:none}
+.ini img,.av img{width:100%;height:100%;object-fit:cover;display:block}
+.row em{font-style:normal;font-size:12px;font-weight:600;background:var(--blue);color:var(--onp);min-width:26px;text-align:center;padding:3px 8px}
+.empty{color:var(--mute);text-align:center;padding:48px 12px;line-height:1.7}
+.top{display:flex;gap:14px;align-items:flex-end}.top>div:last-child{flex:1;min-width:0}
+#avw{display:flex;flex-direction:column;gap:6px;align-items:flex-start;margin-top:18px}
+.av{width:88px;height:88px;background:var(--pink);color:var(--onp);display:grid;place-items:center;font:600 40px Caveat,cursive;overflow:hidden;position:relative;cursor:pointer;flex:none}
+.av i{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font:500 11px Inter,sans-serif;text-align:center;padding:3px}
+.lnk{border:0;background:none;color:var(--mute);font:500 12px Inter,sans-serif;text-decoration:underline;cursor:pointer;padding:0}
+.wr{display:flex;gap:8px}.wr input{flex:1;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-width:44px;height:38px;padding:0 12px;border:0;background:var(--chip);color:var(--ink);font:500 14px Inter,system-ui,sans-serif;cursor:pointer;flex:none;transition:background .2s}
+.chip.on{background:var(--pink);color:var(--onp);font-weight:600}
+.chips.sm{margin-top:8px}.chips.sm .chip{height:30px;min-width:0;font-size:12px}
+.hs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+.sec{margin-top:22px;display:flex;align-items:baseline;justify-content:space-between}
+h2{font:600 26px Caveat,cursive;margin:0}
+h2 span{font:600 12px Inter,sans-serif;background:var(--blue);color:var(--onp);padding:2px 8px;margin-left:6px;vertical-align:middle}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px;margin-top:14px}
+.it{cursor:pointer;background:var(--card);box-shadow:var(--sh);padding:10px 10px 12px;position:relative;animation:pop .32s both}
+.it::before{content:"";position:absolute;top:-7px;left:50%;width:44px;height:14px;margin-left:-22px;background:var(--pink);opacity:.85;transform:rotate(-3deg)}
+.ph{aspect-ratio:3/4;background:var(--chip);display:grid;place-items:center;overflow:hidden;margin-bottom:8px;color:var(--mute);font-size:12px}
+.ph img,.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.it small{display:block;margin-top:2px}
+.del{margin:32px 0 8px;width:100%}
+.st{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;background:var(--card);box-shadow:var(--sh);padding:12px;margin-top:10px}
+.st>div:first-child{flex:1;min-width:130px}.st b{display:block;font-weight:600}
+.st.col{display:block}.st.col input{margin-top:8px;box-shadow:none;background:var(--chip)}
+.seg{display:flex;gap:4px}
+.seg button{height:34px;padding:0 12px;border:0;background:var(--chip);color:var(--ink);font:500 12px Inter,sans-serif;cursor:pointer;transition:background .2s}
+.seg button.on{background:var(--pink);color:var(--onp);font-weight:600}
+.sw{width:48px;height:26px;border:0;background:var(--chip);position:relative;cursor:pointer;flex:none;transition:background .2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;background:var(--ink);transition:transform .2s}
+.sw.on{background:var(--pink)}.sw.on::after{transform:translateX(22px)}
+.scr.in-f{animation:inF .26s cubic-bezier(.2,.8,.2,1)}
+.scr.in-b{animation:inB .26s cubic-bezier(.2,.8,.2,1)}
+.scr.in-n{animation:inN .2s ease-out}
+.scr.out-f{animation:outF .15s ease-in forwards}
+.scr.out-b{animation:outB .15s ease-in forwards}
+.nin{animation:navIn .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes inF{from{opacity:0;transform:translateX(30px)}}
+@keyframes inB{from{opacity:0;transform:translateX(-30px)}}
+@keyframes inN{from{opacity:0}}
+@keyframes outF{to{opacity:0;transform:translateX(-30px)}}
+@keyframes outB{to{opacity:0;transform:translateX(30px)}}
+@keyframes navIn{from{transform:translateY(100%);opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(12px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes fadeo{to{opacity:0}}
+@keyframes up{from{transform:translateY(100%)}}
+@keyframes down{to{transform:translateY(100%)}}
+#sheet{position:fixed;inset:0;z-index:20;display:none}
+#sheet.on{display:block}
+.back{position:absolute;inset:0;background:rgba(0,0,0,.45);animation:fade .22s}
+.panel{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:var(--paper);padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 24px rgba(0,0,0,.25);max-width:560px;margin:0 auto;animation:up .28s cubic-bezier(.2,.8,.2,1)}
+#sheet.closing .back{animation:fadeo .2s forwards}
+#sheet.closing .panel{animation:down .2s ease-in forwards}
+.panel label:first-of-type{margin-top:12px}
+.photo{aspect-ratio:4/3;background:var(--chip);display:grid;place-items:center;color:var(--mute);font-weight:500;cursor:pointer;overflow:hidden;margin-top:12px}
+.step{display:flex;align-items:center;width:max-content;box-shadow:var(--sh)}
+.step button{width:48px;height:44px;border:0;background:var(--chip);color:var(--ink);font-size:20px;cursor:pointer}
+.step b{min-width:56px;text-align:center;background:var(--card);height:44px;line-height:44px}
+.acts{display:flex;gap:10px;margin-top:22px}.acts .btn{flex:1}
+#toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:var(--ink);color:var(--ink-t);padding:10px 16px;font-size:13px;z-index:30;display:none;max-width:90%}
+#toast.on{display:block;animation:pop .25s}
+html.noanim *,html.noanim *::before,html.noanim *::after{animation:none!important;transition:none!important}
+</style>
+<meta name="theme-color" content="#fffdfc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Closet Sousa">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+</head>
+<body>
+<div id="app"></div>
+<nav id="nav"></nav>
+<div id="sheet"></div>
+<div id="toast"></div>
+<script>
+var $=function(s){return document.querySelector(s)};
+var DEF={theme:'auto',acc:'rosa',fs:'m',anim:true,paper:'linha',sort:'recent',store:'Closet Sousa',cc:'55',conf:true};
+var db={clients:[],catalog:[],settings:{}},cur=null,q='',tmp=null,tgt='client',view='home',ndir=0,navK='',pho='',ct;
+try{var s0=localStorage.getItem('closet-sousa');if(s0)db=JSON.parse(s0)}catch(e){}
+db.clients=db.clients||[];db.catalog=db.catalog||[];
+var S=db.settings=Object.assign({},DEF,db.settings||{});
+var app=$('#app'),nav=$('#nav'),sh=$('#sheet');
+var SZ=['PP','P','M','G','GG','36','38','40','42','44'];
+var CORES=['Preto','Branco','Rosa','Azul','Nude','Vermelho','Verde','Bege'];
+var ORD=['home','catalog','settings'];
+var IC={u:'<circle cx="12" cy="8" r="4"/><path d="M4 21c.5-4.500 4-7 8-7s7.500 2.500 8 7"/>',s:'<path d="M8 3L3 6l2 4 3-1v12h8V9l3 1 2-4-5-3c-.5 1.500-2 2.500-4 2.500S8.500 4.500 8 3z"/>',g:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>',q:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.500-4.500"/>'};
+function save(){try{localStorage.setItem('closet-sousa',JSON.stringify(db))}catch(e){toast('Sem espaço para salvar. Tente fotos menores.')}}
+function uid(){return Math.random().toString(36).slice(2,9)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function toast(t){var e=$('#toast');e.textContent=t;e.className='on';setTimeout(function(){e.className=''},2600)}
+function applySet(){var r=document.documentElement;
+ if(S.theme=='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);
+ r.setAttribute('data-acc',S.acc);r.setAttribute('data-paper',S.paper);r.classList.toggle('noanim',!S.anim);
+ document.body.style.zoom={s:.92,m:1,l:1.12}[S.fs]||1}
+
+/* sheets */
+function openSheet(h){clearTimeout(ct);var p=sh.querySelector('.panel');
+ if(sh.classList.contains('on')&&!sh.classList.contains('closing')&&p){p.innerHTML=h;return}
+ sh.className='on';sh.innerHTML='<div class="back" onclick="closeSheet()"></div><div class="panel">'+h+'</div>'}
+function closeSheet(){if(!sh.classList.contains('on')||sh.classList.contains('closing'))return;
+ if(!S.anim){sh.className='';sh.innerHTML='';return}
+ sh.classList.add('closing');ct=setTimeout(function(){sh.className='';sh.innerHTML=''},200)}
+function ask(t,d,fn){openSheet('<h2>'+t+'</h2><p>'+d+'</p><div class="acts"><button class="btn ghost" onclick="closeSheet()">Cancelar</button><button class="btn" onclick="'+fn+'">Excluir</button></div>')}
+
+/* navegação */
+function go(fn,d){ndir=d;var s=app.firstElementChild;if(!S.anim||!s){fn();return}
+ s.className='scr out-'+(d<0?'b':'f');setTimeout(fn,150)}
+function scr(h){return '<div class="scr '+(S.anim?(ndir<0?'in-b':ndir>0?'in-f':'in-n'):'')+'">'+h+'</div>'}
+function setNav(k,h){var ch=k!=navK;navK=k;nav.innerHTML=h;if(ch&&S.anim){nav.classList.remove('nin');void nav.offsetWidth;nav.classList.add('nin')}}
+function show(){({home:home,catalog:catalog,settings:settings,client:client})[view]()}
+function tab(v){if(v==view)return;var d=view=='client'?-1:(ORD.indexOf(v)>ORD.indexOf(view)?1:-1);go(function(){view=v;cur=null;show()},d)}
+function back(){go(function(){view='home';cur=null;show()},-1)}
+function tabsH(){var T=[['home','Clientes',IC.u],['catalog','Roupas',IC.s],['settings','Ajustes',IC.g]];
+ return '<div class="tabs">'+T.map(function(t){return '<button class="tab'+(view==t[0]?' on':'')+'" onclick="tab(\''+t[0]+'\')"><svg viewBox="0 0 24 24">'+t[2]+'</svg>'+t[1]+'</button>'}).join('')+'</div>'}
+
+/* clientes */
+function home(){
+ app.innerHTML=scr('<header><div><h1>'+esc(S.store||'Closet Sousa')+'</h1><p>caderno de clientes</p></div></header><div class="sbar"><svg viewBox="0 0 24 24">'+IC.q+'</svg><input id="q" placeholder="Buscar cliente" value="'+esc(q)+'"></div><main><div id="list"></div></main>');
+ setNav('tabs',tabsH()+'<button class="fab" onclick="newClient()" aria-label="Nova cliente">+</button>');
+ $('#q').oninput=function(e){q=e.target.value;list()};list()}
+function list(){
+ var l=db.clients.filter(function(c){return c.name.toLowerCase().indexOf(q.toLowerCase())>-1});
+ if(S.sort=='az')l.sort(function(a,b){return a.name.localeCompare(b.name)});
+ $('#list').innerHTML=l.length?l.map(function(c,n){
+  return '<div class="row" style="animation-delay:'+Math.min(n,8)*40+'ms" onclick="openClient(\''+c.id+'\')"><span class="ini">'+(c.photo?'<img src="'+c.photo+'" alt="">':esc((c.name||'?')[0].toUpperCase()))+'</span><div><b>'+esc(c.name)+'</b><small>'+esc(c.wpp||'sem whatsapp')+'</small></div><em>'+c.items.length+'</em></div>'}).join('')
+ :'<p class="empty">'+(db.clients.length?'Nenhuma cliente encontrada.':'Seu caderno está vazio.<br>Toque no + para abrir a primeira página.')+'</p>'}
+function newClient(){pho='';
+ openSheet('<h2>Nova cliente</h2><div class="top"><div class="av" id="np" onclick="$(\'#nf\').click()"><span>+</span><i>Foto</i></div><div><label>Nome</label><input id="nn" placeholder="Nome da cliente"></div></div><input type="file" id="nf" accept="image/*" hidden onchange="nphoto(this)"><div class="acts"><button class="btn ghost" onclick="closeSheet()">Cancelar</button><button class="btn" onclick="addClient()">Criar</button></div>')}
+function nphoto(i){compress(i.files[0],360,function(d){pho=d;$('#np').innerHTML='<img src="'+d+'" alt="">'})}
+function addClient(){var n=$('#nn').value.trim();if(!n){toast('Digite o nome da cliente');return}
+ var c={id:uid(),name:n,photo:pho,wpp:'',sizes:[],colors:'',notes:'',items:[]};
+ db.clients.unshift(c);save();closeSheet();go(function(){cur=c;view='client';client()},1)}
+function openClient(id){go(function(){cur=db.clients.filter(function(c){return c.id==id})[0];view='client';client()},1)}
+function waUrl(){var d=(cur.wpp||'').replace(/\D/g,''),cc=(S.cc||'55').replace(/\D/g,'');if(d&&d.length<=11)d=cc+d;return d?'https://wa.me/'+d:'#'}
+function avW(){var c=cur;return '<div class="av" onclick="$(\'#cf\').click()">'+(c.photo?'<img src="'+c.photo+'" alt="">':esc((c.name||'?')[0].toUpperCase()))+'<i>Foto</i></div>'+(c.photo?'<button class="lnk" onclick="rmPhoto()">Remover foto</button>':'')}
+function cphoto(i){compress(i.files[0],360,function(d){cur.photo=d;save();$('#avw').innerHTML=avW()})}
+function rmPhoto(){cur.photo='';save();$('#avw').innerHTML=avW()}
+function client(){var c=cur;
+ app.innerHTML=scr('<header><button class="ib" onclick="back()" aria-label="Voltar">←</button><div><h1>'+esc(c.name)+'</h1><p>ficha da cliente</p></div></header>'+
+ '<main><input type="file" id="cf" accept="image/*" hidden onchange="cphoto(this)"><div class="top"><div id="avw">'+avW()+'</div><div><label>Nome</label><input value="'+esc(c.name)+'" oninput="cur.name=this.value;save()"></div></div>'+
+ '<label>WhatsApp</label><div class="wr"><input type="tel" inputmode="tel" placeholder="(99) 99999-9999" value="'+esc(c.wpp)+'" oninput="cur.wpp=this.value;save()"><a class="btn bl" target="_blank" rel="noopener" onclick="this.href=waUrl()">Chamar</a></div>'+
+ '<label>Tamanhos dela</label><div class="chips">'+SZ.map(function(z){return '<button class="chip'+(c.sizes.indexOf(z)>-1?' on':'')+'" onclick="togSize(\''+z+'\',this)">'+z+'</button>'}).join('')+'</div>'+
+ '<label>Cores preferidas</label><input placeholder="Ex.: rosa, preto, azul" value="'+esc(c.colors)+'" oninput="cur.colors=this.value;save()">'+
+ '<label>Observações</label><textarea placeholder="Estilo, ocasião, medidas..." oninput="cur.notes=this.value;save()">'+esc(c.notes)+'</textarea>'+
+ '<div class="sec"><h2>Roupas<span>'+c.items.length+'</span></h2></div>'+
+ (c.items.length?'<div class="grid">'+itemsH(c.items,'client')+'</div>':'<p class="empty">Nenhuma roupa ainda.</p>')+
+ '<button class="btn ghost del" onclick="ask(\'Excluir cliente?\',\'A ficha e todas as roupas dela serão apagadas.\',\'delClient()\')">Excluir cliente</button></main>');
+ setNav('act','<div class="bar"><button class="btn" onclick="itemSheet(null,\'client\')">+ Adicionar roupa</button></div>');window.scrollTo(0,0)}
+function togSize(z,b){var i=cur.sizes.indexOf(z);if(i>-1){cur.sizes.splice(i,1);b.classList.remove('on')}else{cur.sizes.push(z);b.classList.add('on')}save()}
+function delClient(){db.clients=db.clients.filter(function(c){return c!==cur});save();closeSheet();back()}
+
+/* roupas (cliente e catálogo) */
+function itemsH(a,t){return a.map(function(i,n){
+ return '<div class="it" style="animation-delay:'+Math.min(n,8)*40+'ms" onclick="itemSheet(\''+i.id+'\',\''+t+'\')"><div class="ph">'+(i.img?'<img src="'+i.img+'" alt="">':'sem foto')+'</div><b>'+esc(i.name)+'</b><small>Tam '+esc(i.size)+' · '+i.qty+(t=='cat'?' em estoque':' un')+' · '+esc(i.color||'sem cor')+'</small></div>'}).join('')}
+function catalog(){var c=db.catalog;
+ app.innerHTML=scr('<header><div><h1>Roupas</h1><p>estoque da loja</p></div></header><main><div class="sec"><h2>Catálogo<span>'+c.length+'</span></h2></div>'+(c.length?'<div class="grid">'+itemsH(c,'cat')+'</div>':'<p class="empty">Nenhuma roupa cadastrada.<br>Toque no + para adicionar.</p>')+'</main>');
+ setNav('tabs',tabsH()+'<button class="fab" onclick="itemSheet(null,\'cat\')" aria-label="Nova roupa">+</button>')}
+function arr(){return tgt=='cat'?db.catalog:cur.items}
+function itemSheet(id,t,pre){tgt=t;
+ var it=id?arr().filter(function(x){return x.id==id})[0]:null;
+ tmp=it?JSON.parse(JSON.stringify(it)):(pre||{id:uid(),img:'',name:'',size:'M',qty:1,color:''});
+ var fc=(!it&&t=='client'&&db.catalog.length)?'<label>Do catálogo</label><div class="chips sm hs">'+db.catalog.map(function(x){return '<button class="chip" onclick="fromCat(\''+x.id+'\')">'+esc(x.name)+'</button>'}).join('')+'</div>':'';
+ openSheet('<h2>'+(it?'Editar roupa':(t=='cat'?'Nova roupa no catálogo':'Nova roupa'))+'</h2>'+fc+
+ '<div class="photo" id="pb" onclick="$(\'#f\').click()">'+(tmp.img?'<img src="'+tmp.img+'" alt="">':'+ Adicionar foto')+'</div><input type="file" id="f" accept="image/*" hidden onchange="pick(this)">'+
+ '<label>Nome da roupa</label><input id="in" placeholder="Ex.: Vestido midi floral" value="'+esc(tmp.name)+'">'+
+ '<label>Tamanho</label><div class="chips" id="sz">'+SZ.map(function(z){return '<button class="chip'+(tmp.size==z?' on':'')+'" onclick="setSize(\''+z+'\',this)">'+z+'</button>'}).join('')+'</div>'+
+ '<label>'+(t=='cat'?'Em estoque':'Quantidade')+'</label><div class="step"><button onclick="qty(-1)">−</button><b id="qv">'+tmp.qty+'</b><button onclick="qty(1)">+</button></div>'+
+ '<label>Cor</label><input id="ic" placeholder="Ex.: rosa claro" value="'+esc(tmp.color)+'"><div class="chips sm hs">'+CORES.map(function(c){return '<button class="chip" onclick="$(\'#ic\').value=\''+c+'\'">'+c+'</button>'}).join('')+'</div>'+
+ '<div class="acts">'+(it?'<button class="btn ghost" onclick="askItem()">Excluir</button>':'<button class="btn ghost" onclick="closeSheet()">Cancelar</button>')+'<button class="btn" onclick="saveItem()">Salvar</button></div>')}
+function fromCat(id){var x=db.catalog.filter(function(y){return y.id==id})[0];itemSheet(null,'client',{id:uid(),img:x.img,name:x.name,size:x.size,qty:1,color:x.color})}
+function setSize(z,b){tmp.size=z;var a=document.querySelectorAll('#sz .chip');for(var i=0;i<a.length;i++)a[i].classList.remove('on');b.classList.add('on')}
+function qty(n){tmp.qty=Math.max(1,tmp.qty+n);$('#qv').textContent=tmp.qty}
+function compress(f,m,cb){if(!f)return;var r=new FileReader();
+ r.onload=function(){var im=new Image();im.onload=function(){
+  var k=Math.min(1,m/Math.max(im.width,im.height)),cv=document.createElement('canvas');
+  cv.width=Math.round(im.width*k);cv.height=Math.round(im.height*k);
+  cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);cb(cv.toDataURL('image/jpeg',.72))};im.src=r.result};
+ r.readAsDataURL(f)}
+function pick(i){compress(i.files[0],600,function(d){tmp.img=d;$('#pb').innerHTML='<img src="'+d+'" alt="">'})}
+function refresh(){ndir=0;if(tgt=='cat')catalog();else client()}
+function saveItem(){tmp.name=$('#in').value.trim()||'Sem nome';tmp.color=$('#ic').value.trim();
+ var a=arr(),i=-1;a.forEach(function(x,n){if(x.id==tmp.id)i=n});
+ if(i>-1)a[i]=tmp;else a.push(tmp);save();closeSheet();refresh()}
+function askItem(){if(S.conf)ask('Excluir roupa?','Esta roupa será removida.','delItem()');else delItem()}
+function delItem(){var id=tmp.id,a=arr().filter(function(x){return x.id!=id});if(tgt=='cat')db.catalog=a;else cur.items=a;save();closeSheet();refresh()}
+
+/* ajustes */
+function seg(k,o){return '<div class="seg">'+o.map(function(x){return '<button class="'+(S[k]==x[0]?'on':'')+'" onclick="setSeg(\''+k+'\',\''+x[0]+'\',this)">'+x[1]+'</button>'}).join('')+'</div>'}
+function tog(k){return '<button class="sw'+(S[k]?' on':'')+'" onclick="setTog(\''+k+'\',this)" aria-label="Alternar"></button>'}
+function st(t,d,c){return '<div class="st"><div><b>'+t+'</b><small>'+d+'</small></div>'+c+'</div>'}
+function settings(){
+ app.innerHTML=scr('<header><div><h1>Ajustes</h1><p>do seu caderno</p></div></header><main>'+
+ '<label>Aparência</label>'+
+ st('Tema','Claro, escuro ou do aparelho',seg('theme',[['auto','Auto'],['light','Claro'],['dark','Escuro']]))+
+ st('Cor de destaque','Rosa ou azul',seg('acc',[['rosa','Rosa'],['azul','Azul']]))+
+ st('Tamanho do texto','Ajusta toda a leitura',seg('fs',[['s','P'],['m','M'],['l','G']]))+
+ st('Papel do caderno','Estilo das folhas',seg('paper',[['linha','Pautado'],['grade','Grade'],['liso','Liso']]))+
+ '<label>Comportamento</label>'+
+ st('Animações','Transições entre telas e menus',tog('anim'))+
+ st('Ordem das clientes','Como a lista é mostrada',seg('sort',[['recent','Recentes'],['az','A–Z']]))+
+ st('Confirmar exclusões','Perguntar antes de apagar roupas',tog('conf'))+
+ '<label>Loja</label>'+
+ '<div class="st col"><b>Nome da loja</b><input value="'+esc(S.store)+'" oninput="setTxt(\'store\',this.value)"></div>'+
+ '<div class="st col"><b>Código do país (WhatsApp)</b><input inputmode="numeric" value="'+esc(S.cc)+'" oninput="setTxt(\'cc\',this.value)"></div>'+
+ '<label>Dados</label><button class="btn ghost del" style="margin-top:0" onclick="ask(\'Apagar tudo?\',\'Todas as clientes e roupas serão apagadas deste aparelho.\',\'wipe()\')">Apagar todos os dados</button></main>');
+ setNav('tabs',tabsH())}
+function setSeg(k,v,b){S[k]=v;save();var a=b.parentNode.children;for(var i=0;i<a.length;i++)a[i].classList.remove('on');b.classList.add('on');applySet()}
+function setTog(k,b){S[k]=!S[k];save();b.classList.toggle('on',S[k]);applySet()}
+function setTxt(k,v){S[k]=v;save()}
+function wipe(){db.clients=[];db.catalog=[];save();closeSheet();toast('Dados apagados')}
+applySet();show();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(error => console.warn("Falha ao preparar uso offline:", error));
+  });
+}
+</script>
+</body>
+</html>
+

@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "closet-sousa-";
-const CACHE_NAME = `${CACHE_PREFIX}v1`;
+const CACHE_NAME = `${CACHE_PREFIX}v3`;
 const APP_SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"];
 
 self.addEventListener("install", event => {
@@ -43,3 +43,4 @@ self.addEventListener("fetch", event => {
     }
   })());
 });
+
